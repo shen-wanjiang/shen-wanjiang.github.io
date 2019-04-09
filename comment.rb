@@ -1,6 +1,7 @@
 username = "shen-wanjiang" # GitHub 用户名
-new_token = "49ef34dde1a8b3828c3ff724a4fd50d500bf3ef2"  # GitHub Token
-repo_name = "github-comments-repo" # 存放 issues
+new_token = "5d8d201937e7d0c62a90776edd79b9658ddb1168"  # GitHub Token
+repo_name = "github-comments-repo
+" # 存放 issues
 sitemap_url = "https://draveness.me/sitemap.xml" # sitemap
 kind = "Gitalk" # "Gitalk" or "gitment"
 

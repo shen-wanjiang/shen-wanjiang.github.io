@@ -62,8 +62,8 @@ kramdown:
 # Gitalk
 gitalk:
   enable: true    #是否开启Gitalk评论
-  clientID: 1d756ce5dc87811773f5                            #生成的clientID
-  clientSecret: e0fc1118c639718e81daf22cfaa2e5a88d69fe7e    #生成的clientSecret
+  clientID: e8f53bd8aa986ad5156a                            #生成的clientID
+  clientSecret: a4b242677278f844e67eb026c2525c6c814819cb    #生成的clientSecret
   repo: shen-wanjiang.github.io    #仓库名称
   owner: shen-wanjiang    #github用户名
   admin: shen-wanjiang
