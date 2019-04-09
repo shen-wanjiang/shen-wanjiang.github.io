@@ -66,7 +66,7 @@ gitalk:
   clientSecret: e0fc1118c639718e81daf22cfaa2e5a88d69fe7e    #生成的clientSecret
   repo: shen-wanjiang.github.io    #仓库名称
   owner: shen-wanjiang    #github用户名
-  admin: [shen-wanjiang]
+  admin: shen-wanjiang
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
 
 
