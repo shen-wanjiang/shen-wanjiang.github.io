@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      2019-04-30-运行ss服务报错
+title:      运行ss服务报错
 subtitle:   undefined symbol,EVP_CIPHER_CTX_cleanup
 date:       2019-04-30
 author:     WJ
@@ -15,7 +15,7 @@ tags:
 ##### 错误如下
 ```py
 INFO: loading config from ss.json 
-2019-04-14 12:32:13 INFO loading libcrypto from libcrypto.so.1.1 
+2018-04-14 12:32:13 INFO loading libcrypto from libcrypto.so.1.1 
 Traceback (most recent call last): 
 File “/usr/local/bin/sslocal”, line 11, in 
 sys.exit(main()) 
