@@ -235,3 +235,37 @@ while True:
             return
 ...
 ```
+#### Tornado异步编程
+**`@gen.coroutine`**
+并不是所有函数加了个装饰gen.coroutine就会变成异步,比如上面的例子`get_web()`如果里面的httpclient使用了同步库HTTPClient(),再`yield http_client.fetch()就会报错
+```py
+raise BadYieldError("yielded unknown object %r" % (yielded,))
+```
+因为这个库本身是同步的,你yield的时候,直接执行了这个同步函数,然后返回的是response,给到这个装饰器的时候,handle_yielded检测不到是一个可以转换的future就会报错,所以要加上异步功能,必须使用符合tornado异步库要求的库,它们会把执行的函数添加到ioloop并且返回future,并在完成的时候future.set_result()
+
+**`@asynchronous`**
+tornado在使用gen.coroutine协程做异步变成之前用@asynchronous这个装饰器来异步编程的.
+```py
+class AsyncHandle(RequestHandler):
+    @asynchronous
+    def get(self):
+    http_client = AsyncHTTPClient()
+    http_client.fetch("http://example.com", callback=self.on_fetch)
+
+    def on_fetch(self, response):
+        do_something_with_response(response)
+        self.render("template.html")
+```
+- 它的原理就是当异步调用http_client.fetch()时,进去执行,还是和上面一样,没有同步执行,等待返回,而是创建一个future(),然后把这个callback on_fetch()注册到ioloop里,等这个future()被set_result()了就会执行on_fetch()
+- 而真正要做的request = fetch()也要下达命令执行,由于这个是非阻塞的,由epoll,IO服用机制通知是否完成,所以是发起这个请求通过add_handle(fd, callback)来加进ioloop循环,然后ioloop等待epoll的通知,fd有数据可读了,说明请求完成,就可以执行fetch()的callback,通过源码知道,这个callback是: 上面创建的future set_sesult.
+意思就是当请求完了,epoll通知ioloop,ioloop执行这个fd的callback,也就是设置这个请求完成了,future.set_result()
+    ```py
+    def handle_response(response):
+        if raise_error and response.error:
+            future.set_exception(response.error)
+        else:
+            future.set_result(response)
+    ```
+- 一旦这个future.set_result()就绪了,就会执行第一步给ioloop添加的callback,也就是我们在代码上写的on_fetch()函数. 这个过程行云流程.
+
+所有无论是用callback()方式,还是gen.corountin来实现异步,他们的核心都是一样的,通过add_callback和非阻塞任务add_handler()来注册任何或者非阻塞socket.
