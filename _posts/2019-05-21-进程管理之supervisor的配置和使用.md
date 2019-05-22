@@ -10,7 +10,9 @@ tags:
     - other
 ---
 
->Supervisor（http://supervisord.org/）是用Python开发的一个client/server服务，是Linux/Unix系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用Supervisor管理的进程，当一个进程意外被杀死，supervisort监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写shell脚本来控制。
+>[Supervisor](http://supervisord.org)是用Python开发的一个client/server服务，是Linux/Unix系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用Supervisor管理的进程，当一个进程意外被杀死，supervisort监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写shell脚本来控制。
+
+[GitHub项目](https://github.com/Supervisor/supervisor)
 
 Supervisor是python2写就的一款强大的运维工具,当然,现在已经完全支持python3了,我们以下的操作都是处于python3环境
 ### 1. 安装
@@ -81,12 +83,12 @@ stdout_logfile=/opt/apache-tomcat-8.0.35/logs/catalina.out
 stopasgroup=false   ;默认为false,进程被杀死时，是否向这个进程组发送stop信号，包括子进程
 killasgroup=false   ;默认为false，向进程组发送kill信号，包括子进程
  
-;包含其它配置文件
+;包含其它配置文件,这里就是我们所需要配置的文件
 [include]
 files = /etc/supervisor/conf.d/*.conf    ;可以指定一个或多个以.conf结束的配置文件,有的是以*.ini 结尾的，这个是自定义的 不影响；
 ```
 
-为什么要有[include ]呢?
+**为什么要有[include ]呢?**
 当我们要监控的程序进程比较多的时候，如果都像tomcat一样都写在此配置文件里的话，那会管理起来很不方便，也很凌乱！所以此时用[include]来管理其他程序进程的配置的文件就非常有必要了
 进入`/etc/supervisor/`下的conf.d文件夹. 然后创建以conf结尾的文件作为配置文件: `touch tomcat.conf` 
 编辑tomcat.conf:
