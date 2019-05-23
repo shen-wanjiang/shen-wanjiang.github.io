@@ -38,7 +38,7 @@ pyenv的安装有两种方式:
     1. **自动安装(推荐)**
     pyenv 提供了自动安装的工具，执行命令安装即可：
     `curl https://pyenv.run | bash`
-    保证系统有 git ，否则需要新安装 git。
+    保证系统有 git ，否则需要新安装 git. 如果curl命令有问题,见下方的问题解答
     2. 手动安装
     如果想要更加详细的了解安装过程，可以使用手动安装,请参考[Installation](https://github.com/pyenv/pyenv#installation)
 
@@ -141,6 +141,9 @@ rm -rf ~/.pyenv/versions/env-name  # 删除其真实目录
 此时，还需注意，当我们将项目运行的 env 环境部署到生产环境时，由于我们的 python 包是依赖 python 的，需要注意生产环境的 python 版本问题。
 
 ### 安装过程中出现的错误
-1. 错误:`BUILD FEILED (Ubuntu 16.04 using python-build 1.2.2)`
+1. 在服务器上使用 curl命令出现错误: `curl: (35) SSL connect error`
+无法在服务器使用curl命令访问https域名,原因是nss版本有点旧了，yum -y update nss更新一下，重新curl即可！
+
+2. 错误:`BUILD FEILED (Ubuntu 16.04 using python-build 1.2.2)`
 问题是缺少依赖包(第一步没有安装所需要的包)，不同系统见以下链接:
 `https://github.com/pyenv/pyenv/wiki/Common-build-problems`
