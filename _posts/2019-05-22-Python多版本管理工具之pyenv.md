@@ -39,16 +39,34 @@ pyenv的安装有两种方式:
     pyenv 提供了自动安装的工具，执行命令安装即可：
     `curl https://pyenv.run | bash`
     保证系统有 git ，否则需要新安装 git. 如果curl命令有问题,见下方的问题解答
-    2. 手动安装
-    如果想要更加详细的了解安装过程，可以使用手动安装,请参考[Installation](https://github.com/pyenv/pyenv#installation)
+    2. 手动安装(手动安装可以更加详细的了解安装过程，请参考[Installation](https://github.com/pyenv/pyenv#installation))
+        1. git clone https://github.com/pyenv/pyenv ~/.pyenv
+        2. 将PYENV_ROOT和pyenv init加入bash的~/.bashrc
+            ```shell
+            1 echo 'export PATH=~/.pyenv/bin:$PATH' >> ~/.bashrc
+            2 echo 'export PYENV_ROOT=~/.pyenv' >> ~/.bashrc
+            3 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+            4 source ~/.bashrc
+            ```
+        3. 安装pyenv-virtualenv(**注意**, 手动安装不会安装虚拟环境相关控件:pyenv-virtualenv)
+            ```shell
+            1 git clone https://github.com/pyenv/pyenv-virtualenv ~/.pyenv/plugins/pyenv-virtualenv
+            2 echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bash_profile
+            3 source ~/.bashrc
+            ```
+        
 
 3. 添加环境变量
-安装成功后记得在 .bashrc 或者 .bash_profile 中添加三行来开启自动补全。
-```shell
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-```
+    安装成功后记得在 .bashrc 或者 .bash_profile 中添加三行来开启自动补全。
+    ```shell
+    export PATH="$HOME/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+    ```
+    然后使用命令刷新终端:
+    ```shell
+    source ~/.bashrc
+    ```
 
 ### pyenv 常用命令
 使用 `pyenv commands` 显示所有可用命令
@@ -139,6 +157,14 @@ rm -rf ~/.pyenv/versions/env-name  # 删除其真实目录
 
 使用 pyenv 来管理 python，使用 pyenv-virtualenv 插件来管理多版本 python 包。
 此时，还需注意，当我们将项目运行的 env 环境部署到生产环境时，由于我们的 python 包是依赖 python 的，需要注意生产环境的 python 版本问题。
+
+### 安装的python版本以及虚拟环境的位置
+以上面创建虚拟环境为例子: `pyenv virtualenv 2.7.10 env-2.7.10`
+如果我们想在其它项目中引用这个环境怎么办?它包含了我们的python版本以及我们下载的相关第三方包
+
+**它的路径在: `~/.pyenv/versions/env_2.7.10/bin/python`**
+如果你安装的.pyenv位置或者虚拟环境的名字不一样,同样的格式,查找即可
+当然,如果仅仅要我们安装的python版本而不要虚拟环境,也是同样的位置,在versions下会有2.7.10,就是你的python解释器
 
 ### 安装过程中出现的错误
 1. 在服务器上使用 curl命令出现错误: `curl: (35) SSL connect error`
