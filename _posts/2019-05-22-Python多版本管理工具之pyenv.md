@@ -25,13 +25,13 @@ pyenv 的美好之处在于，它并没有使用将不同的PATH植入不同的s
 1. 针对不同系统,安装不同的工具
 [Common build problems](https://github.com/pyenv/pyenv/wiki/Common-build-problems)
 
-如果你是mac系统,请直接使用[Homebrew](https://brew.sh/)来安装
-[具体操作](https://github.com/pyenv/pyenv#homebrew-on-macos):
-```sehll
-$ brew update
-$ brew install pyenv
-```
-安装之后请跳过第二部,直接添加环境变量
+    如果你是mac系统,请直接使用[Homebrew](https://brew.sh/)来安装
+    [具体操作](https://github.com/pyenv/pyenv#homebrew-on-macos):
+    ```sehll
+    $ brew update
+    $ brew install pyenv
+    ```
+    安装之后请跳过第二部,直接添加环境变量
 
 2. pyenv安装
 pyenv的安装有两种方式:  
