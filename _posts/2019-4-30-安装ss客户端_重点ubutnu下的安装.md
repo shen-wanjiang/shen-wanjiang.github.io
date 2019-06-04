@@ -43,9 +43,9 @@ tags:
         - -k后面跟你的密码（写在双引号之间）
         - 其他的用默认选项就好（想改的参见帮助文档）
 
-    2. 方法二: **文件读取运行**
+    2. 方法二: **文件读取运行(我采用的是这种)** 
         在你的~目录下新建一个.json文件（或者别的地方，都可以）
-        touch ss.json /home/shen/　　# 我的文件放在这里，请按照自己实际情况新建文件
+        touch shadowsocks.json /etc/shadowsocks.json　　# 我的文件放在这里，请按照自己实际情况新建文件
         ok，不管怎么样，现在我们有了一个.json的文件，然后打开编辑，内容如下：
         ```json
         {
@@ -77,7 +77,7 @@ tags:
     ![](https://raw.githubusercontent.com/shen-wanjiang/save_picture/master/markdown_pic/ss%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F.png)
 
     如果你不慎关掉,重新运行,发现端口被占用了. 用下面方法处理:
-    netstat -apn | grep 1080
+    lsof -i :1080
     得到数据后,你发现占用端口的pid后
     kill -9 pid    # 直接杀掉,然后启动就可以了
 
