@@ -4,7 +4,7 @@ title:      Python多版本管理工具之pyenv
 subtitle:   pyenv配置及使用
 date:       2019-05-22
 author:     WJ
-header-img: img/post-bg-python-unicode.jpg
+header-img: img/post-bg-android.jpg
 catalog: true
 tags:
     - other

@@ -4,7 +4,7 @@ title:      运行ss服务报错
 subtitle:   undefined symbol,EVP_CIPHER_CTX_cleanup
 date:       2019-04-30
 author:     WJ
-header-img: img/post-bg-ios9-web.jpg
+header-img: img/post-bg-android.jpg
 catalog: true
 tags:
     - shadowsocks

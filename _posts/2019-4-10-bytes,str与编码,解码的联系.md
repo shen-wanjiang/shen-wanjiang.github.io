@@ -4,7 +4,7 @@ title:      编码与解码
 subtitle:   python中的bytes,str类型, 以及编码解码
 date:       2019-4-10
 author:     WJ
-header-img: img/post-bg-python-unicode.jpg
+header-img: img/post-bg-android.jpg
 catalog: true
 tags:
     - python

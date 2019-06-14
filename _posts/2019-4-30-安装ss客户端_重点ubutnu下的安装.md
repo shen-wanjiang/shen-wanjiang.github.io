@@ -4,7 +4,7 @@ title:      安装ss客户端
 subtitle:   重点ubutnu下的安装
 date:       2019-04-30
 author:     WJ
-header-img: img/post-bg-ios9-web.jpg
+header-img: img/post-bg-android.jpg
 catalog: true
 tags:
     - shadowsocks

@@ -4,7 +4,7 @@ title:      进程管理之supervisor的配置和使用
 subtitle:   supervisor配置及使用
 date:       2019-05-21
 author:     WJ
-header-img: img/post-bg-python-unicode.jpg
+header-img: img/post-bg-android.jpg
 catalog: true
 tags:
     - other
