@@ -98,10 +98,10 @@ service-worker: true
 
 # Friends
 friends: [
-    {
-        title: "简书",
-        href: "https://www.jianshu.com/u/73b7f16b6f12"
-    },
+    # {
+    #     title: "简书",
+    #     href: "https://www.jianshu.com/u/73b7f16b6f12"
+    # },
     {
         title: "CSDN",
         href: "https://blog.csdn.net/YiJie__ShuSheng"
